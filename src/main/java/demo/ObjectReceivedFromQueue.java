@@ -25,16 +25,13 @@ public class ObjectReceivedFromQueue {
         // messageconsumer is used for receiving
         MessageConsumer consumer = session.createConsumer(destination);
         // we receive the message
-        System.out.println("hello");
-        while (true) {
-            Message message = consumer.receive();
-            if (message instanceof ObjectMessage) {
-                ObjectMessage objectMessage = (ObjectMessage) message;
-                Employee employee = (Employee) objectMessage.getObject();
-                System.out.println("received msg " + employee);
-            }
+        Message message = consumer.receive();
+        if (message instanceof ObjectMessage) {
+            ObjectMessage objectMessage = (ObjectMessage) message;
+            Employee employee = (Employee) objectMessage.getObject();
+            System.out.println("received msg " + employee);
         }
-
+        connection.close();
 
     }
 }

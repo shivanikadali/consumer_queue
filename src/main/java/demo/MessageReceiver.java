@@ -26,9 +26,8 @@ public class MessageReceiver {
         MessageConsumer consumer = session.createConsumer(destination);
         // we receive the message
         Message message = consumer.receive();
-
         if (message instanceof TextMessage testMessage) {
-            //TextMessage testMessage=(TestMessage) message;
+            // TextMessage testMessage=(TestMessage) message;
             System.out.println("Received the message ' " + testMessage.getText() + "'");
         }
         connection.close();
