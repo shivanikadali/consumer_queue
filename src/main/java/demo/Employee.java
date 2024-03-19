@@ -42,5 +42,4 @@ public class Employee implements Serializable
     public String toString() {
         return "Employee [name=" + name + ", empno=" + empno + ", designation=" + designation + "]";
     }
-    
 }
