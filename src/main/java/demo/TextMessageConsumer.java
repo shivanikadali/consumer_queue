@@ -27,13 +27,14 @@ public class TextMessageConsumer {
         javax.jms.MessageConsumer infoConsumer = session.createConsumer(destination, "Type='information'");
 
         // we receive the message
-        Message greeting =greetingsConsumer.receive();
+        Message greeting = greetingsConsumer.receive();
 
         // process
         if (greeting instanceof TextMessage testMessage) {
             System.out.println("the information is  " + testMessage.getText() + "'");
         }
-     
+
+        // process
         Message information = infoConsumer.receive();
         if (information instanceof TextMessage testMessage) {
             System.out.println("Receives the greetings  " + testMessage.getText() + "'");
@@ -41,4 +42,3 @@ public class TextMessageConsumer {
         connection.close();
     }
 }
-
