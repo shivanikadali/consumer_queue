@@ -4,7 +4,7 @@ import javax.jms.JMSException;
 
 public class Main {
     public static void main(String[] args) throws JMSException {
-        MessageConsumer.receivingFromQueue();
+        TextMessageConsumer.receivingFromQueue();
         // ObjectConsumerFromQueue.receivingFromQueue();
     }
 }

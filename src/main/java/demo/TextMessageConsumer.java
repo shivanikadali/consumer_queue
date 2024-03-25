@@ -10,7 +10,7 @@ import javax.jms.TextMessage;
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
-public class MessageConsumer {
+public class TextMessageConsumer {
     private static String url = ActiveMQConnection.DEFAULT_BROKER_URL;
     private static String queueName = "MESSAGE_QUEUE";
 
@@ -22,21 +22,20 @@ public class MessageConsumer {
         Destination destination = session.createQueue(queueName);
 
         // messageconsumer is used for receiving based on type/property
-
         // msg routing based on properties
-        javax.jms.MessageConsumer greetingsconsumer = session.createConsumer(destination, "Type='greetings'");
-        javax.jms.MessageConsumer consumer = session.createConsumer(destination, "Type='information'");
+        javax.jms.MessageConsumer greetingsConsumer = session.createConsumer(destination, "Type='greetings'");
+        javax.jms.MessageConsumer infoConsumer = session.createConsumer(destination, "Type='information'");
 
         // we receive the message
-        Message message = consumer.receive();
+        Message greeting =greetingsConsumer.receive();
 
         // process
-        if (message instanceof TextMessage testMessage) {
+        if (greeting instanceof TextMessage testMessage) {
             System.out.println("the information is  " + testMessage.getText() + "'");
         }
-
-        Message message2 = greetingsconsumer.receive();
-        if (message2 instanceof TextMessage testMessage) {
+     
+        Message information = infoConsumer.receive();
+        if (information instanceof TextMessage testMessage) {
             System.out.println("Receives the greetings  " + testMessage.getText() + "'");
         }
         connection.close();
