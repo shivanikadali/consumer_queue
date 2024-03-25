@@ -23,36 +23,23 @@ public class MessageConsumer {
 
         // messageconsumer is used for receiving based on type/property
 
-        //msg routing based on properties
+        // msg routing based on properties
         javax.jms.MessageConsumer greetingsconsumer = session.createConsumer(destination, "Type='greetings'");
         javax.jms.MessageConsumer consumer = session.createConsumer(destination, "Type='information'");
 
         // we receive the message
-        Message message=consumer.receive();
+        Message message = consumer.receive();
 
-        //process 
-            if (message instanceof TextMessage testMessage) {
-                System.out.println("the information is  " + testMessage.getText() + "'");
-            }
-        
-        Message message2=greetingsconsumer.receive();
-            if (message2 instanceof TextMessage testMessage) {
-                System.out.println("Receives the greetings  " + testMessage.getText() + "'");
-            }
+        // process
+        if (message instanceof TextMessage testMessage) {
+            System.out.println("the information is  " + testMessage.getText() + "'");
+        }
+
+        Message message2 = greetingsconsumer.receive();
+        if (message2 instanceof TextMessage testMessage) {
+            System.out.println("Receives the greetings  " + testMessage.getText() + "'");
+        }
         connection.close();
     }
-
 }
 
-/*
- * 
- * // messageconsumer is used for receiving
- * javax.jms.MessageConsumer consumer = session.createConsumer(destination);
- * 
- * // we receive the message
- * Message message = consumer.receive();
- * if (message instanceof TextMessage testMessage) {
- * System.out.println("Received the message ' " + testMessage.getText() + "'");
- * }
- * connection.close();
- */
