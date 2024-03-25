@@ -34,7 +34,6 @@ public class TextMessageConsumer {
             System.out.println("the information is  " + testMessage.getText() + "'");
         }
 
-        // process
         Message information = infoConsumer.receive();
         if (information instanceof TextMessage testMessage) {
             System.out.println("Receives the greetings  " + testMessage.getText() + "'");
